@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="header">
+        <h1>Todo: {{title}}</h1>
+    </div>
+    <div class="content">
+        <div class="title">
+            <form id="todo" method=post action="/todo">
+                <label for="title">Title
+                    <input id="title" name="title">
+                </label>
+
+                <label for="description">Description
+                    <input id="description" name="description">
+                </label>
+
+                <label for="until">Until
+                    <input type="date" name="until">
+                </label>
+
+                <label for="importance">Importance
+                    <input type="number" name="importance" min="1" max="5">
+                </label>
+
+                <label for="done">done
+                    <input type="checkbox" id="done" name="done">
+                </label>
+
+
+                <input type="submit" value="Save">
+            </form>
+            <button type="button" class="button" ><a href="/">Cancel</a></button>
+        </div>
+    </div>
+</div>

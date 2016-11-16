@@ -18,8 +18,13 @@ module.exports.showNotice = function(req, res) {
     })
 }
 
-module.exports.createNotice = function(req, res) {
-    store.add(req.body.title, req.body.description, req.body.importance, req.body.until, req.body.done, function (err, notice) {
+module.exports.saveNotice = function(req, res) {
+    var todoTitle = req.body.title;
+    var todoDescription = req.body.description;
+    var todoImportance = req.body.importance;
+    var todoUntil = req.body.until;
+    var todoDone = req.body.done;
+    store.add(todoTitle,todoDescription,todoImportance,todoUntil,todoDone, function (err, notice) {
         //ToDo:
     })
 }
@@ -34,4 +39,9 @@ module.exports.deleteNotice =  function (req, res)
         //Todo:
     });
 };
+
+module.exports.showTodo = function (req, res) {
+    res.render('todo');
+}
+
 
