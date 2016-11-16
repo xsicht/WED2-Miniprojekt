@@ -4,7 +4,8 @@ var notices = require('../control/controller');
 
 router.get("/", notices.showIndex);
 router.get("/notices", notices.showAllNotices);
-router.get("/notices/:id/", notices.showNotice);
+router.post("/notices/:id/", notices.updateNotice);
+router.post("/notices/sort/:sorting/", notices.showSorted);
 router.delete("/notices/:id/", notices.deleteNotice);
 
 router.get("/todo", notices.newTodo);

@@ -1,5 +1,6 @@
 var store = require("../model/model.js");
 var bodyParser = require('body-parser');
+var ascending = true;
 
 module.exports.showIndex = function (req, res) {
     store.all(function(err, notices) {
@@ -11,6 +12,54 @@ module.exports.showIndex = function (req, res) {
 module.exports.showAllNotices = function(req, res) {
     store.all(function(err, notices) {
         var todos = notices;
+        res.render('index', todos);
+    });
+}
+
+module.exports.showSorted = function(req, res) {
+    store.all(function(err, notices) {
+        var todos = notices;
+        switch(req.params.sorting) {
+            case "byFinishDate":
+                todos.sort(function (a, b) {
+                    if(ascending){
+                        return parseFloat(a.until) - parseFloat(b.until)
+                    }
+                    else{
+                        return parseFloat(b.until) - parseFloat(a.until);
+                    }
+                });
+            case "byCreationDate":
+                todos.sort(function (a, b) {
+                    if(ascending){
+                        return parseFloat(a.created) - parseFloat(b.created)
+                    }
+                    else{
+                        return parseFloat(b.created) - parseFloat(a.created);
+                    }
+                });
+            case "byImportance":
+                todos.sort(function (a, b) {
+                    if(ascending){
+                        return parseFloat(a.importance) - parseFloat(b.importance)
+                    }
+                    else{
+                        return parseFloat(b.importance) - parseFloat(a.importance);
+                    }
+                });
+            case "byCompletion":
+                todos.sort(function (a, b) {
+                    if(ascending){
+                        return parseFloat(a.done) - parseFloat(b.done)
+                    }
+                    else{
+                        return parseFloat(b.done) - parseFloat(a.done);
+                    }
+                });
+        }
+        ascending = !ascending;
+        console.log(todos);
+        console.log(ascending);
         res.render('index', todos);
     });
 }
@@ -27,8 +76,9 @@ module.exports.saveNotice = function(req, res) {
     var todoDescription = req.body.description;
     var todoImportance = req.body.importance;
     var todoUntil = req.body.until;
+    var todoCreated = new Date().toString();
     var todoDone = req.body.done;
-    store.add(todoTitle,todoDescription,todoImportance,todoUntil,todoDone, function (err, notice) {
+    store.add(todoTitle, todoDescription, todoImportance, todoUntil, todoCreated, todoDone, function (err, notice) {
         //ToDo:
     })
 }
