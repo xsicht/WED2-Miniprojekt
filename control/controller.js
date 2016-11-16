@@ -3,7 +3,6 @@ var bodyParser = require('body-parser');
 
 module.exports.showIndex = function (req, res) {
     store.all(function(err, notices) {
-        console.log(notices);
         res.render('index', notices);
     });
 }
