@@ -10,7 +10,7 @@ function Notice(title, description, importance, until, done) {
 }
 
 function publicFindAllNotices(callback) {
-    db.find({}, function (err, docs) {
+    db.find({}, function (err, doc) {
         if(callback) {
             callback(err, doc);
         }

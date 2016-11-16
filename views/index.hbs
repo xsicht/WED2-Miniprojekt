@@ -24,20 +24,19 @@
         </div>
         <div class="todoList">
             {{#each .}}
-            {{title}}
-            {{/each}}
             <div class="todo">
                 <ul>
                     <li>
-                        <p>Datum</p>
-                        <label for="finished">Finished</label>
-                        <input type="checkbox" id="finished">
-                        <p>Aufgabentitel</p>
-                        <p>Aufgabenbeschreibung</p>
+                        <p>Date: {{until}}</p>
+                        <p>Done: {{done}}</p>
+                        <p>Title: {{title}}</p>
+                        <p>Description: {{description}}</p>
+                        <p>Importance: {{importance}}</p>
                         <button type="button" id="edit">Edit</button>
                     </li>
                 </ul>
             </div>
+            {{/each}}
         </div>
     </div>
 </div>
