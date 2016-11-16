@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 
 module.exports.showIndex = function (req, res) {
     store.all(function(err, notices) {
+        console.log(notices);
         res.render('index', notices);
     });
 }
@@ -36,7 +37,6 @@ module.exports.showSorted = function(req, res) {
                     return parseFloat(a.done) - parseFloat(b.done)
                 });
         }
-        ascending = !ascending;
         res.render('index', todos);
     });
 }
