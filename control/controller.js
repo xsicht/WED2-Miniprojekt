@@ -4,7 +4,6 @@ var ascending = true;
 
 module.exports.showIndex = function (req, res) {
     store.all(function(err, notices) {
-        console.log(notices);
         res.render('index', notices);
     });
 }
@@ -17,6 +16,7 @@ module.exports.showAllNotices = function(req, res) {
 }
 
 module.exports.showSorted = function(req, res) {
+    console.log("show Sorted");
     store.all(function(err, notices) {
         var todos = notices;
         switch(req.params.sorting) {
@@ -58,8 +58,6 @@ module.exports.showSorted = function(req, res) {
                 });
         }
         ascending = !ascending;
-        console.log(todos);
-        console.log(ascending);
         res.render('index', todos);
     });
 }

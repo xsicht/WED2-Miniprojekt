@@ -6,7 +6,7 @@
         <div class="title">
             <form id="todo" method=post action="{{#if _id}}/todo/{{_id}}{{else}}/todo{{/if}}">
                 <label for="title">Title
-                    <input id="title" name="title" value="{{title}}">
+                    <input id="title" name="title" required="required" value="{{title}}">
                 </label>
 
                 <label for="description">Description
