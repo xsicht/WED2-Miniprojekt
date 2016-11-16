@@ -1,11 +1,12 @@
 var Datastore = require('nedb');
 var db = new Datastore({ filename: './data/data.db', autoload: true });
 
-function Notice(title, description, importance, until, done) {
+function Notice(title, description, importance, until, created, done) {
     this.title = title;
     this.description = description;
     this.importance = importance;
     this.until = until;
+    this.created = created;
     this.done = done;
 }
 

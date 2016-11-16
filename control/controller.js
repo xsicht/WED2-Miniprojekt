@@ -1,6 +1,5 @@
 var store = require("../model/model.js");
 var bodyParser = require('body-parser');
-var ascending = true;
 
 module.exports.showIndex = function (req, res) {
     store.all(function(err, notices) {
@@ -22,39 +21,19 @@ module.exports.showSorted = function(req, res) {
         switch(req.params.sorting) {
             case "byFinishDate":
                 todos.sort(function (a, b) {
-                    if(ascending){
-                        return parseFloat(a.until) - parseFloat(b.until)
-                    }
-                    else{
-                        return parseFloat(b.until) - parseFloat(a.until);
-                    }
+                    return parseFloat(a.until) - parseFloat(b.until)
                 });
             case "byCreationDate":
                 todos.sort(function (a, b) {
-                    if(ascending){
-                        return parseFloat(a.created) - parseFloat(b.created)
-                    }
-                    else{
-                        return parseFloat(b.created) - parseFloat(a.created);
-                    }
+                    return parseFloat(a.created) - parseFloat(b.created)
                 });
             case "byImportance":
                 todos.sort(function (a, b) {
-                    if(ascending){
-                        return parseFloat(a.importance) - parseFloat(b.importance)
-                    }
-                    else{
-                        return parseFloat(b.importance) - parseFloat(a.importance);
-                    }
+                    return parseFloat(a.importance) - parseFloat(b.importance)
                 });
             case "byCompletion":
                 todos.sort(function (a, b) {
-                    if(ascending){
-                        return parseFloat(a.done) - parseFloat(b.done)
-                    }
-                    else{
-                        return parseFloat(b.done) - parseFloat(a.done);
-                    }
+                    return parseFloat(a.done) - parseFloat(b.done)
                 });
         }
         ascending = !ascending;
