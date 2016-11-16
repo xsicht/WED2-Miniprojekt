@@ -56,7 +56,7 @@ module.exports.saveNotice = function(req, res) {
     var todoCreated = new Date().toString();
     var todoDone = req.body.done;
     store.add(todoTitle, todoDescription, todoImportance, todoUntil, todoCreated, todoDone, function (err, notice) {
-        //ToDo:
+        res.redirect("/");
     })
 }
 
@@ -64,7 +64,8 @@ module.exports.updateNotice = function(req, res) {
     console.log("update Notice");
     console.log(req.params.id);
     store.update(req.params.id, req.body.title, req.body.description, req.body.importance, req.body.until, req.body.done, function(err, notice){
-        err? res.end("FAIL"): res.end("OK");
+        //err? res.end("FAIL"): res.end("OK");
+        res.redirect("/");
     });
 }
 

@@ -22,7 +22,7 @@
                 </label>
 
                 <label for="done">done
-                    <input type="checkbox" id="done" name="done" value="{{done}}">
+                    <input type="checkbox" id="done" name="done" value="{{#if done}}{{done}}{{else}}true{{/if}}">
                 </label>
 
                 {{#if _id}}
