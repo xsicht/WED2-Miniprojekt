@@ -2,20 +2,22 @@ var store = require("../model/model.js");
 var bodyParser = require('body-parser');
 
 module.exports.showIndex = function (req, res) {
-    var testArray = { title: 'test', todos: [{name: "deine mudda"},{name: "dini muetter"}]};
-    res.render('index', testArray);
+    store.all(function(err, notices) {
+        res.render('index', notices);
+    });
 }
 
 module.exports.showAllNotices = function(req, res) {
     store.all(function(err, notices) {
-        console.log(notices);
-    })
+        var todos = notices;
+        res.render('index', todos);
+    });
 }
 
 module.exports.showNotice = function(req, res) {
     store.get(req.params.id, function(err, notice) {
-        console.log(notice);
-    })
+        err? res.end("FAIL"): res.end("OK");
+    });
 }
 
 module.exports.saveNotice = function(req, res) {
@@ -30,13 +32,14 @@ module.exports.saveNotice = function(req, res) {
 }
 
 module.exports.updateNotice = function(req, res) {
-    //Todo:
+    store.update(req.params.id, req.body.title, req.body.description, req.body.importance, req.body.until, req.body.done, function(err, notice){
+        err? res.end("FAIL"): res.end("OK");
+    });
 }
 
-module.exports.deleteNotice =  function (req, res)
-{
+module.exports.deleteNotice =  function(req, res) {
     store.delete(req.params.id , function(err, notice) {
-        //Todo:
+        err? res.end("FAIL"): res.end("OK");
     });
 };
 

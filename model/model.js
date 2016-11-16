@@ -7,43 +7,47 @@ function Notice(title, description, importance, until, done) {
     this.importance = importance;
     this.until = until;
     this.done = done;
-    this.state = "OK";
 }
 
 function publicFindAllNotices(callback) {
     db.find({}, function (err, docs) {
-        callback(err, docs);
+        if(callback) {
+            callback(err, doc);
+        }
     });
 }
 
 function publicGetNotice(id, callback) {
     db.findOne({ _id: id }, function (err, doc) {
-        callback(err, doc);
+        if(callback) {
+            callback(err, doc);
+        }
     });
 }
 
 function publicAddNotice(title, description, importance, until, done, callback) {
     var notice = new Notice(title, description, importance, until, done);
-    db.insert(notice, function (err, newDoc) {
+    db.insert(notice, function (err, doc) {
         if(callback) {
-            callback(err, newDoc);
+            callback(err, doc);
         }
     });
 }
 
 function publicDelete(id, callback) {
-    db.update({_id: id}, {$set: {"state": "DELETED"}}, {}, function (err,doc) {
-        publicGetNotice(id, callback);
-    });
-}
-
-function publicUpdate(id, title, description, importance, until, done, callback) {
-    var notice = new Notice(title, description, importance, until, done);
-    db.update({_id: id}, notice, function (err, newDoc) {
-        if(callback){
-            callback(err, newDoc);
+    db.remove({_id: id}, {}, function (err, doc) {
+        if(callback) {
+            callback(err, doc);
         }
     });
 }
 
-module.exports = {add : publicAddNotice, delete : publicDelete, get : publicGetNotice, all : publicFindAllNotices};
+function publicUpdate(id, title, description, importance, until, done, callback) {
+    db.update({_id: id}, {$set: {"title": title, "description": description, "importance": importance, "until": until, "done": done}}, function(err, doc){
+        if(callback) {
+            callback(err, doc);
+        }
+    });
+}
+
+module.exports = {add : publicAddNotice, delete : publicDelete, update: publicUpdate, get : publicGetNotice, all : publicFindAllNotices};
