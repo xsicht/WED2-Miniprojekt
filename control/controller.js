@@ -36,9 +36,6 @@ module.exports.showSorted = function(req, res) {
                     return parseFloat(a.done) - parseFloat(b.done)
                 });
         }
-        ascending = !ascending;
-        console.log(todos);
-        console.log(ascending);
         res.render('index', todos);
     });
 }
