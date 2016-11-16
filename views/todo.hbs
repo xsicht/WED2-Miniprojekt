@@ -30,8 +30,8 @@
                 {{else}}
                     <input type="submit" value="Save">
                 {{/if}}
-
             </form>
+            {{#if _id}}<button type="button" class="button" ><a href="/delete/{{_id}}">Delete</a></button>{{/if}}
             <button type="button" class="button" ><a href="/">Cancel</a></button>
         </div>
     </div>

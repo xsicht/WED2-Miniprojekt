@@ -71,7 +71,7 @@ module.exports.updateNotice = function(req, res) {
 
 module.exports.deleteNotice =  function(req, res) {
     store.delete(req.params.id , function(err, notice) {
-        err? res.end("FAIL"): res.end("OK");
+        res.redirect("/");
     });
 };
 

@@ -8,5 +8,6 @@ router.get("/todo", notices.newTodo);
 router.post("/todo", notices.saveNotice);
 router.get("/todo/:id/", notices.showTodo);
 router.post("/todo/:id/", notices.updateNotice);
+router.get("/delete/:id", notices.deleteNotice);
 
 module.exports = router;
