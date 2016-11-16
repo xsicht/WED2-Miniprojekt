@@ -10,7 +10,7 @@ function Notice(title, description, importance, until, done) {
     this.state = "OK";
 }
 
-function publicFindAllNotices() {
+function publicFindAllNotices(callback) {
     db.find({}, function (err, docs) {
         callback(err, docs);
     });
