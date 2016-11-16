@@ -19,37 +19,21 @@ module.exports.showSorted = function(req, res) {
     store.all(function(err, notices) {
         var todos = notices;
         switch(req.params.sorting) {
-            case "byFinishDateAsc":
+            case "byFinishDate":
                 todos.sort(function (a, b) {
                     return parseFloat(a.until) - parseFloat(b.until)
                 });
-            case "byCreationDateAsc":
+            case "byCreationDate":
                 todos.sort(function (a, b) {
                     return parseFloat(a.created) - parseFloat(b.created)
                 });
-            case "byImportanceAsc":
+            case "byImportance":
                 todos.sort(function (a, b) {
                     return parseFloat(a.importance) - parseFloat(b.importance)
                 });
-            case "byCompletionAsc":
+            case "byCompletion":
                 todos.sort(function (a, b) {
                     return parseFloat(a.done) - parseFloat(b.done)
-                });
-            case "byFinishDateDsc":
-                todos.sort(function (a, b) {
-                    return parseFloat(b.until) - parseFloat(a.until)
-                });
-            case "byCreationDateDsc":
-                todos.sort(function (a, b) {
-                    return parseFloat(b.created) - parseFloat(a.created)
-                });
-            case "byImportanceDsc":
-                todos.sort(function (a, b) {
-                    return parseFloat(b.importance) - parseFloat(a.importance)
-                });
-            case "byCompletionDsc":
-                todos.sort(function (a, b) {
-                    return parseFloat(b.done) - parseFloat(a.done)
                 });
         }
         ascending = !ascending;
