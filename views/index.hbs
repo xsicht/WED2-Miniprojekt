@@ -1,6 +1,6 @@
 <div class="container">
     <div class="header">
-        <h1>Todo</h1>
+        <h1>Todo: {{title}}</h1>
     </div>
     <div class="content">
         <div class="create">
@@ -23,6 +23,9 @@
             </ul>
         </div>
         <div class="todoList">
+            {{#each todos}}
+            {{name}}
+            {{/each}}
             <div class="todo">
                 <ul>
                     <li>

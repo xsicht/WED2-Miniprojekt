@@ -2,8 +2,8 @@ var store = require("../model/model.js");
 var bodyParser = require('body-parser');
 
 module.exports.showIndex = function (req, res) {
-    //res.render(index)
-    res.render('index', { title: 'Express' });
+    var testArray = { title: 'test', todos: [{name: "deine mudda"},{name: "dini muetter"}]};
+    res.render('index', testArray);
 /*    res.type('text/html');
     res.write("<html>");
     res.write("<p>Willkommen!</p>");
