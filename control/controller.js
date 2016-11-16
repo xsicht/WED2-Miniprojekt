@@ -1,6 +1,5 @@
 var store = require("../model/model.js");
 var bodyParser = require('body-parser');
-var ascending = true;
 
 module.exports.showIndex = function (req, res) {
     store.all(function(err, notices) {
@@ -20,41 +19,37 @@ module.exports.showSorted = function(req, res) {
     store.all(function(err, notices) {
         var todos = notices;
         switch(req.params.sorting) {
-            case "byFinishDate":
+            case "byFinishDateAsc":
                 todos.sort(function (a, b) {
-                    if(ascending){
-                        return parseFloat(a.until) - parseFloat(b.until)
-                    }
-                    else{
-                        return parseFloat(b.until) - parseFloat(a.until);
-                    }
+                    return parseFloat(a.until) - parseFloat(b.until)
                 });
-            case "byCreationDate":
+            case "byCreationDateAsc":
                 todos.sort(function (a, b) {
-                    if(ascending){
-                        return parseFloat(a.created) - parseFloat(b.created)
-                    }
-                    else{
-                        return parseFloat(b.created) - parseFloat(a.created);
-                    }
+                    return parseFloat(a.created) - parseFloat(b.created)
                 });
-            case "byImportance":
+            case "byImportanceAsc":
                 todos.sort(function (a, b) {
-                    if(ascending){
-                        return parseFloat(a.importance) - parseFloat(b.importance)
-                    }
-                    else{
-                        return parseFloat(b.importance) - parseFloat(a.importance);
-                    }
+                    return parseFloat(a.importance) - parseFloat(b.importance)
                 });
-            case "byCompletion":
+            case "byCompletionAsc":
                 todos.sort(function (a, b) {
-                    if(ascending){
-                        return parseFloat(a.done) - parseFloat(b.done)
-                    }
-                    else{
-                        return parseFloat(b.done) - parseFloat(a.done);
-                    }
+                    return parseFloat(a.done) - parseFloat(b.done)
+                });
+            case "byFinishDateDsc":
+                todos.sort(function (a, b) {
+                    return parseFloat(b.until) - parseFloat(a.until)
+                });
+            case "byCreationDateDsc":
+                todos.sort(function (a, b) {
+                    return parseFloat(b.created) - parseFloat(a.created)
+                });
+            case "byImportanceDsc":
+                todos.sort(function (a, b) {
+                    return parseFloat(b.importance) - parseFloat(a.importance)
+                });
+            case "byCompletionDsc":
+                todos.sort(function (a, b) {
+                    return parseFloat(b.done) - parseFloat(a.done)
                 });
         }
         ascending = !ascending;
