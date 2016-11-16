@@ -1,2 +1,40 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div class="container">
+    <div class="header">
+        <h1>Todo</h1>
+    </div>
+    <div class="content">
+        <div class="create">
+            <a href="xxxx">Create new Note</a>
+        </div>
+        <div class="styleSwitcher">
+            <form action="#">
+                <select name="style">
+                    <option>BlackWhite-Style</option>
+                    <option>Alternativ-Style</option>
+                </select>
+            </form>
+        </div>
+        <div class="filter">
+            <ul>
+                <li><a href="xxxxx">By finish Date</a></li>
+                <li><a href="xxxxx">By created Date</a></li>
+                <li><a href="xxxxx">By Importance</a></li>
+                <li><a href="xxxx">Show finished</a></li>
+            </ul>
+        </div>
+        <div class="todoList">
+            <div class="todo">
+                <ul>
+                    <li>
+                        <p>Datum</p>
+                        <label for="finished">Finished</label>
+                        <input type="checkbox" id="finished">
+                        <p>Aufgabentitel</p>
+                        <p>Aufgabenbeschreibung</p>
+                        <button type="button" id="edit">Edit</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

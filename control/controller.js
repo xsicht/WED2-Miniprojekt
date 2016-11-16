@@ -2,11 +2,13 @@ var store = require("../model/model.js");
 var bodyParser = require('body-parser');
 
 module.exports.showIndex = function (req, res) {
-    res.type('text/html');
+    //res.render(index)
+    res.render('index', { title: 'Express' });
+/*    res.type('text/html');
     res.write("<html>");
     res.write("<p>Willkommen!</p>");
     res.write("<form action='/notices' method='get'><input type='submit' value='Order a Pizza'></form>");
-    res.end("</html>");
+    res.end("</html>");*/
 }
 
 module.exports.showAllNotices = function(req, res) {
