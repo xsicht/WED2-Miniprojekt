@@ -5,10 +5,11 @@ var notices = require('../control/controller');
 router.get("/", notices.showIndex);
 router.get("/notices", notices.showAllNotices);
 router.get("/notices/:id/", notices.showNotice);
-router.post("/notices/:id/", notices.updateNotice);
 router.delete("/notices/:id/", notices.deleteNotice);
 
-router.get("/todo", notices.showTodo);
+router.get("/todo", notices.newTodo);
 router.post("/todo", notices.saveNotice);
+router.get("/todo/:id/", notices.showTodo);
+router.post("/todo/:id/", notices.updateNotice);
 
 module.exports = router;

@@ -4,29 +4,33 @@
     </div>
     <div class="content">
         <div class="title">
-            <form id="todo" method=post action="/todo">
+            <form id="todo" method=post action="{{#if _id}}/todo/{{_id}}{{else}}/todo{{/if}}">
                 <label for="title">Title
-                    <input id="title" name="title">
+                    <input id="title" name="title" value="{{title}}">
                 </label>
 
                 <label for="description">Description
-                    <input id="description" name="description">
+                    <input id="description" name="description" value="{{description}}">
                 </label>
 
                 <label for="until">Until
-                    <input type="date" name="until">
+                    <input type="date" name="until" value="{{until}}">
                 </label>
 
                 <label for="importance">Importance
-                    <input type="number" name="importance" min="1" max="5">
+                    <input type="number" name="importance" min="1" max="5" value="{{importance}}">
                 </label>
 
                 <label for="done">done
-                    <input type="checkbox" id="done" name="done">
+                    <input type="checkbox" id="done" name="done" value="{{done}}">
                 </label>
 
+                {{#if _id}}
+                    <input type="submit" value="Edit">
+                {{else}}
+                    <input type="submit" value="Save">
+                {{/if}}
 
-                <input type="submit" value="Save">
             </form>
             <button type="button" class="button" ><a href="/">Cancel</a></button>
         </div>

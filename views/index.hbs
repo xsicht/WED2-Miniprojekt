@@ -4,7 +4,7 @@
     </div>
     <div class="content">
         <div class="create">
-            <a href="/todo">Create new Note</a>
+            <a href="/todo/new">Create new Note</a>
         </div>
         <div class="styleSwitcher">
             <form action="#">
@@ -24,18 +24,22 @@
         </div>
         <div class="todoList">
             {{#each .}}
-            <div class="todo">
-                <ul>
-                    <li>
-                        <p>Date: {{until}}</p>
-                        <p>Done: {{done}}</p>
-                        <p>Title: {{title}}</p>
-                        <p>Description: {{description}}</p>
-                        <p>Importance: {{importance}}</p>
-                        <button type="button" id="edit">Edit</button>
-                    </li>
-                </ul>
-            </div>
+                {{#if _id}}
+                    <div class="todo">
+                        <ul>
+                            <li>
+                                <p>Id: {{_id}}</p>
+                                <p>Date: {{until}}</p>
+                                <p>Done: {{done}}</p>
+                                <p>Title: {{title}}</p>
+                                <p>Description: {{description}}</p>
+                                <p>Importance: {{importance}}</p>
+
+                                <button type="button" id="edit"><a href="/todo/{{_id}}/" class="edit" id="{{_id}}" >Edit</a></button>
+                            </li>
+                        </ul>
+                    </div>
+                {{/if}}
             {{/each}}
         </div>
     </div>
