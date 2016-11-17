@@ -21,15 +21,47 @@ html, body {
   box-shadow: $shadow;
 }
 
+.todoList{
+  margin-top: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-content: space-around;
+}
+
+.first{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.filter{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+/* Small screens */
+@media all and (max-width: 700px) {
+  .filter, .first{
+    flex-flow: column wrap;
+  }
+
+  .filter a, .first a {
+    margin: 5px 20px;
+    padding: 3px;
+  }
+}
+
 .postIt{
   background: #ffb;
   box-shadow: $shadow;
-  display: inline-block;
+  display: block;
   padding: 10px;
+  margin: 20px;
   font-size: 160%;
-  height: 20vw;
-  width: 20vw;
-
+  height: 500px;
+  width: 500px;
 }
 
 .newPostIt{
@@ -66,16 +98,16 @@ input[type=submit] {
   font-size: 160%;
   font-weight: bolder;
   padding: 50px 50px;
-  margin-top: 5px;
-  margin-left: 5px;
+  margin: 20px;
   text-decoration: none;
   color: black;
-  background-color: #fff;
-  background-image: linear-gradient(#eee 2px, transparent 1px);
-  background-size: 20px;
+  background: url("/pictures/paper.jpg");
+  background-size: cover;
   border: none;
   box-shadow: $shadow;
 }
+
+
 
 .empty{
   display: table;
@@ -87,17 +119,3 @@ input[type=submit] {
   }
 }
 
-.filter{
-  ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    li{
-      float: left;
-      a {
-
-      }
-    }
-  }
-}

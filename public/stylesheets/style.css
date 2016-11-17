@@ -12,14 +12,40 @@ html, body {
   background: #ffb;
   box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5); }
 
+.todoList {
+  margin-top: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-content: space-around; }
+
+.first {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between; }
+
+.filter {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center; }
+
+/* Small screens */
+@media all and (max-width: 700px) {
+  .filter, .first {
+    flex-flow: column wrap; }
+  .filter a, .first a {
+    margin: 5px 20px;
+    padding: 3px; } }
+
 .postIt {
   background: #ffb;
   box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
-  display: inline-block;
+  display: block;
   padding: 10px;
+  margin: 20px;
   font-size: 160%;
-  height: 20vw;
-  width: 20vw; }
+  height: 500px;
+  width: 500px; }
 
 .newPostIt {
   display: table;
@@ -46,13 +72,11 @@ input[type=submit] {
   font-size: 160%;
   font-weight: bolder;
   padding: 50px 50px;
-  margin-top: 5px;
-  margin-left: 5px;
+  margin: 20px;
   text-decoration: none;
   color: black;
-  background-color: #fff;
-  background-image: linear-gradient(#eee 2px, transparent 1px);
-  background-size: 20px;
+  background: url("/pictures/paper.jpg");
+  background-size: cover;
   border: none;
   box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5); }
 
@@ -63,13 +87,5 @@ input[type=submit] {
   .empty a {
     text-decoration: none;
     color: LightSkyBlue; }
-
-.filter ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden; }
-  .filter ul li {
-    float: left; }
 
 /*# sourceMappingURL=style.css.map */
