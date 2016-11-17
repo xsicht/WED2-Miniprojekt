@@ -5,8 +5,9 @@ var sass = require('node-sass');
 module.exports.showIndex = function (req, res) {
     store.all(function(err, notices) {
         var data ={};
-        var items = Object.keys(notices).length;
-        if (items == 0){
+        var itemsLength = Object.keys(notices).length;
+        //res.render('index' , data || {}); geht nicht weil data immer inhalt hat {[]}
+        if (itemsLength == 0){
             res.render('index');
         } else{
             data.todo = notices;
