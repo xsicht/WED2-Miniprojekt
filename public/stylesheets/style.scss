@@ -3,7 +3,7 @@ $color-in-ascent: White;
 $colorBackground: #999;
 $colorText: dimgray;
 $shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
-$iconSize: 50px;
+$iconSize: 40px;
 
 html, body {
   margin: 0;
@@ -69,9 +69,9 @@ html, body {
   display: block;
   padding: 50px;
   margin: 20px;
-  font-size: 160%;
-  height: 500px;
-  width: 500px;
+  font-size: 130%;
+  height: 400px;
+  width: 400px;
   position:relative;
 }
 
@@ -144,7 +144,7 @@ input[type=submit] {
 
 .button{
   text-align: center;
-  font-size: 160%;
+  font-size: 130%;
   font-weight: bolder;
   padding: 50px 50px;
   margin: 20px;

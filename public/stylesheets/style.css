@@ -52,9 +52,9 @@ html, body {
   display: block;
   padding: 50px;
   margin: 20px;
-  font-size: 160%;
-  height: 500px;
-  width: 500px;
+  font-size: 130%;
+  height: 400px;
+  width: 400px;
   position: relative; }
 
 .date {
@@ -82,7 +82,7 @@ html, body {
   word-wrap: break-word; }
 
 .material-icons {
-  font-size: 50px !important;
+  font-size: 40px !important;
   color: dimgray; }
 
 input[type=text] {
@@ -115,7 +115,7 @@ input[type=submit] {
 
 .button {
   text-align: center;
-  font-size: 160%;
+  font-size: 130%;
   font-weight: bolder;
   padding: 50px 50px;
   margin: 20px;
