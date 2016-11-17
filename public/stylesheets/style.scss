@@ -14,7 +14,12 @@ html, body {
 }
 
 .header{
-  display: table;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.sticky{
   margin: 50px auto;
   padding: 20px;
   background: #ffb;
@@ -66,7 +71,6 @@ html, body {
 .postIt{
   background: #ffb;
   box-shadow: $shadow;
-  display: block;
   padding: 50px;
   margin: 20px;
   font-size: 130%;
