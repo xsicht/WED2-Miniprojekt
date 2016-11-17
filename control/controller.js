@@ -1,14 +1,16 @@
 var store = require("../model/model.js");
 var bodyParser = require('body-parser');
-var mom = require('moment');
+var sass = require('node-sass');
+var style = "";
 
 module.exports.showIndex = function (req, res) {
     store.all(function(err, notices) {
         var data ={};
+        data.style = style;
         var itemsLength = Object.keys(notices).length;
         //res.render('index' , data || {}); geht nicht weil data immer inhalt hat {[]}
         if (itemsLength == 0){
-            res.render('index');
+            res.render('index', data);
         } else{
             data.todo = dateFormat(notices);
             res.render('index' , data);
@@ -128,7 +130,8 @@ module.exports.showTodo = function (req, res) {
 };
 
 module.exports.switchStyle = function (req, res) {
-     //toDo:
+    style = "alt";
+     res.redirect("/");
 };
 
 function resetSorting(req){
