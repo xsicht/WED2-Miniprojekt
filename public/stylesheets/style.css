@@ -6,7 +6,11 @@ html, body {
   background-repeat: repeat; }
 
 .header {
-  display: table;
+  display: flex;
+  justify-content: center;
+  align-content: center; }
+
+.sticky {
   margin: 50px auto;
   padding: 20px;
   background: #ffb;
@@ -49,7 +53,6 @@ html, body {
 .postIt {
   background: #ffb;
   box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
-  display: block;
   padding: 50px;
   margin: 20px;
   font-size: 130%;
