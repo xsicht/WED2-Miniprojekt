@@ -1,44 +1,45 @@
 <div class="container">
-    <div class="header">
-        <h1>Todo: {{title}}</h1>
-    </div>
     <div class="content">
         <div class="create">
-            <a href="/todo/new">Create new Note</a>
+            <a href="/todo/new" class="button">Create new Note</a>
         </div>
         <div class="styleSwitcher">
-                <select name="style">
-                    <option>BlackWhite-Style</option>
-                    <option>Alternativ-Style</option>
-                </select>
+            <a href="xxxx" class="button">Switch Style</a>
         </div>
         <div class="filter">
             <ul>
-                <li><a href="/byFinishDate/">By finish Date</a></li>
-                <li><a href="/byCreationDate/">By created Date</a></li>
-                <li><a href="/byImportance/">By Importance</a></li>
-                <li><a href="/byCompletion/">Show finished</a></li>
+                <li><a href="/byFinishDate/" class="button">By finish Date</a></li>
+                <li><a href="/byCreationDate/" class="button">By created Date</a></li>
+                <li><a href="/byImportance/" class="button">By Importance</a></li>
+                <li><a href="/byCompletion/" class="button">Show finished</a></li>
             </ul>
         </div>
         <div class="todoList">
-            {{#each .}}
-                {{#if _id}}
-                    <div class="todo">
-                        <ul>
-                            <li>
-                                <p>Id: {{_id}}</p>
-                                <p>Date: {{until}}</p>
-                                <p>Done: {{done}}</p>
-                                <p>Title: {{title}}</p>
-                                <p>Description: {{description}}</p>
-                                <p>Importance: {{importance}}</p>
-
-                                <button type="button" id="edit"><a href="/todo/{{_id}}/" class="edit" id="{{_id}}" >Edit</a></button>
-                            </li>
-                        </ul>
-                    </div>
-                {{/if}}
-            {{/each}}
+            {{#if todo}}
+                {{#each todo}}
+                    {{#if _id}}
+                        <div class="todo">
+                            <ul>
+                                <li class="postIt">
+                                    <p class="date"><i class="material-icons">schedule</i>{{until}}</p>
+                                    <p><i class="material-icons">assignment_late</i>{{importance}}</p>
+                                    <p class="title">{{title}}</p>
+                                    <p class="description">{{description}}</p>
+                                    <a href="/todo/{{_id}}/" id="{{_id}}" class="icon" ><i class="material-icons">mode_edit</i></a>
+                                    {{#if done}}
+                                        <i class="material-icons done">done</i>
+                                    {{/if}}
+                                </li>
+                            </ul>
+                        </div>
+                    {{/if}}
+                {{/each}}
+            {{else}}
+                <div class="postIt">
+                    <h1>No Note!</h1>
+                    <h2>Add a note <a href="/todo/new" >here</a>.</h2>
+                </div>
+            {{/if}}
         </div>
     </div>
 </div>

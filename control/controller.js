@@ -3,14 +3,17 @@ var bodyParser = require('body-parser');
 
 module.exports.showIndex = function (req, res) {
     store.all(function(err, notices) {
-        res.render('index', notices);
-    });
-}
+        var data ={};
+        var items = Object.keys(notices).length;
+        if (items == 0){
+            res.render('index');
+            console.log("Send ohne json");
+        } else{
+            data.todo = notices;
+            res.render('index' , data);
+            console.log("Send with json");
+        }
 
-module.exports.showAllNotices = function(req, res) {
-    store.all(function(err, notices) {
-        var todos = notices;
-        res.render('index', todos);
     });
 }
 
@@ -36,6 +39,10 @@ module.exports.showSorted = function(req, res) {
                     return parseFloat(a.done) - parseFloat(b.done)
                 });
         }
+
+        //Ich glaub dis Filter funktioniert nöd, lueg mal dä log ah.
+
+        console.log(todos);
         res.render('index', todos);
     });
 }

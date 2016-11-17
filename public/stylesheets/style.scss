@@ -1,6 +1,103 @@
-$primaryColor: #eeccff;
+$color-ascent: LightSkyBlue;
+$color-in-ascent: White;
+$colorBackground: #999;
+$colorText: dimgray;
+$shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+$iconSize: 50px;
 
-body, html {
-  $primaryColor: #ccc;
-  background: $primaryColor;
+html, body {
+  margin: 0;
+  font-family: 'Indie Flower', cursive;
+  color: $colorText;
+  background-image: url("/pictures/cork.jpg");
+  background-repeat: repeat;
+}
+
+.header{
+  display: table;
+  margin: 50px auto;
+  padding: 20px;
+  background: #ffb;
+  box-shadow: $shadow;
+}
+
+.postIt{
+  background: #ffb;
+  box-shadow: $shadow;
+  display: inline-block;
+  padding: 10px;
+  font-size: 160%;
+  height: 20vw;
+  width: 20vw;
+
+}
+
+.newPostIt{
+  display: table;
+  margin: 50px auto;
+
+}
+
+.material-icons{
+  font-size: $iconSize !important;
+  color: $colorText;
+}
+
+input[type=submit] {
+  background: url("/pictures/save.png");
+  background-size: cover;
+  border: 0;
+  display: block;
+  height: 30px;
+  width: 30px;
+}
+
+
+
+.title {
+  font-weight: bolder;
+}
+
+
+
+.button{
+  display: inline-block;
+  text-align: center;
+  font-size: 160%;
+  font-weight: bolder;
+  padding: 50px 50px;
+  margin-top: 5px;
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
+  background-color: #fff;
+  background-image: linear-gradient(#eee 2px, transparent 1px);
+  background-size: 20px;
+  border: none;
+  box-shadow: $shadow;
+}
+
+.empty{
+  display: table;
+  margin: 0 auto;
+  text-align:center;
+  a{
+    text-decoration: none;
+    color: $color-ascent;
+  }
+}
+
+.filter{
+  ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    li{
+      float: left;
+      a {
+
+      }
+    }
+  }
 }

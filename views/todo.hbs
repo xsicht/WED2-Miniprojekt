@@ -1,10 +1,7 @@
 <div class="container">
-    <div class="header">
-        <h1>Todo: {{title}}</h1>
-    </div>
     <div class="content">
-        <div class="title">
-            <form id="todo" method=post action="{{#if _id}}/todo/{{_id}}{{else}}/todo{{/if}}">
+        <div class="postIt newPostIt">
+            <form id="todo" method=post action="{{#if _id}}/todo/{{_id}}{{else}}/todo{{/if}}" class="todo">
                 <label for="title">Title
                     <input id="title" name="title" required="required" value="{{title}}">
                 </label>
@@ -25,14 +22,19 @@
                     <input type="checkbox" id="done" name="done" value="true" {{#if done}}checked{{/if}}>
                 </label>
 
-                {{#if _id}}
-                    <input type="submit" value="Edit">
+                <!--{{#if _id}}
+                    <input type="submit" value="Edit" class="button">
                 {{else}}
-                    <input type="submit" value="Save">
-                {{/if}}
+                    <input type="submit" value="Save" class="button">
+                    <i class="material-icons">sd_card</i>
+                {{/if}}-->
+
+                <button type="submit">
+                    <i class="material-icons">sd_card</i>
+                </button>
             </form>
-            {{#if _id}}<button type="button" class="button" ><a href="/delete/{{_id}}">Delete</a></button>{{/if}}
-            <button type="button" class="button" ><a href="/">Cancel</a></button>
+            {{#if _id}}<a href="/delete/{{_id}}" class="button"><i class="material-icons">delete</i></a></button>{{/if}}
+            <a href="/" class="icon"><i class="material-icons">clear</i></a></button>
         </div>
     </div>
 </div>
