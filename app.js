@@ -1,4 +1,6 @@
 var express = require('express');
+var session = require('express-session');
+var app = express();
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -27,6 +29,7 @@ app.use(require('node-sass-middleware')({
   sourceMap: true
 }));
 
+app.use(session({ secret: 'hoffetliischjetzguet', resave: false, saveUninitialized: true }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
