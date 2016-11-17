@@ -4,7 +4,7 @@ var notices = require('../control/controller');
 
 router.get("/", notices.showIndex);
 router.get("/sort/:sorting", notices.showSorted);
-router.get("/todo", notices.newTodo);
+//router.get("/todo", notices.newTodo);
 router.post("/todo", notices.saveNotice);
 router.get("/todo/:id/", notices.showTodo);
 router.post("/todo/:id/", notices.updateNotice);

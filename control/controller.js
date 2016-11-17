@@ -1,5 +1,6 @@
 var store = require("../model/model.js");
 var bodyParser = require('body-parser');
+var sass = require('node-sass');
 
 module.exports.showIndex = function (req, res) {
     store.all(function(err, notices) {
@@ -7,73 +8,68 @@ module.exports.showIndex = function (req, res) {
         var items = Object.keys(notices).length;
         if (items == 0){
             res.render('index');
-            console.log("Send ohne json");
         } else{
             data.todo = notices;
             res.render('index' , data);
-            console.log("Send with json");
         }
-
     });
-}
+};
 
 module.exports.showSorted = function(req, res) {
-    console.log("show Sorted");
     store.all(function(err, notices) {
-        var todos = notices;
+        var data = {};
+        data.todo = notices;
         switch(req.params.sorting) {
             case "byFinishDate":
-                todos.sort(function (a, b) {
-                    return parseFloat(a.until) - parseFloat(b.until)
+                data.todo.sort(function (a, b) {
+                    return Date.parse(a.until) - Date.parse(b.until);
                 });
+                break;
             case "byCreationDate":
-                todos.sort(function (a, b) {
-                    return parseFloat(a.created) - parseFloat(b.created)
+                data.todo.sort(function (a, b) {
+                    return Date.parse(a.created) - Date.parse(b.created);
                 });
+                break;
             case "byImportance":
-                todos.sort(function (a, b) {
-                    return parseFloat(a.importance) - parseFloat(b.importance)
+                data.todo.sort(function (a, b) {
+                    return parseFloat(a.importance) - parseFloat(b.importance);
                 });
+                break;
             case "byCompletion":
-                todos.sort(function (a, b) {
-                    return parseFloat(a.done) - parseFloat(b.done)
+                data.todo = data.todo.filter(function (i){
+                    return i.done=="true";
                 });
+                break;
         }
-
-        //Ich glaub dis Filter funktioniert nöd, lueg mal dä log ah.
-
-        console.log(todos);
-        res.render('index', todos);
+        res.render('index', data);
     });
-}
+};
 
 module.exports.showNotice = function(req, res) {
     store.get(req.params.id, function(err, notice) {
         err? res.end("FAIL"): res.end("OK");
     });
-}
+};
 
 module.exports.saveNotice = function(req, res) {
-    console.log("add Notice");
     var todoTitle = req.body.title;
     var todoDescription = req.body.description;
     var todoImportance = req.body.importance;
     var todoUntil = req.body.until;
     var todoCreated = new Date().toString();
-    var todoDone = req.body.done;
+    var todoDone = false;
     store.add(todoTitle, todoDescription, todoImportance, todoUntil, todoCreated, todoDone, function (err, notice) {
         res.redirect("/");
     })
-}
+};
 
 module.exports.updateNotice = function(req, res) {
     console.log("update Notice");
     console.log(req.params.id);
     store.update(req.params.id, req.body.title, req.body.description, req.body.importance, req.body.until, req.body.done, function(err, notice){
-        //err? res.end("FAIL"): res.end("OK");
         res.redirect("/");
     });
-}
+};
 
 module.exports.deleteNotice =  function(req, res) {
     store.delete(req.params.id , function(err, notice) {
@@ -82,19 +78,57 @@ module.exports.deleteNotice =  function(req, res) {
 };
 
 module.exports.newTodo = function (req, res) {
-    console.log("new Todo");
     res.render('todo');
-}
+};
 
 module.exports.showTodo = function (req, res) {
     console.log("edit Todo");
     store.get(req.params.id, function(err, data) {
         res.render('todo', data);
     });
-}
+};
 
 module.exports.switchStyle = function (req, res) {
-    console.log("switchStyle");
+     store.all(function(err, notices) {
+        var data ={};
+        var items = Object.keys(notices).length;
+        if (items == 0){
+            res.render('index');
+        } else{
+            data.todo = notices;
+            dynamicSass('style.scss', {
+                'colorBackground': 'blue'
+            }, res.render('index' , data));
+        }
+    });
+};
+
+var sassOptionsDefaults = {
+    includePaths: [
+        'style.scss'
+    ],
+    outputStyle: 'compressed'
+};
+
+function dynamicSass(scssEntry, variables, handleSuccess) {
+    var dataString =  sassVariables(variables) + "@import '" + scssEntry  + "';";
+    var sassOptions = Object.assign({}, sassOptionsDefaults, {
+        data: dataString
+    });
+
+    sass.render(sassOptions, function (err, result) {
+        console.log(sassOptions);
+        return handleSuccess(result.css.toString());
+    });
 }
 
 
+function sassVariable(name, value) {
+    return "$" + name + ": " + value + ";";
+}
+
+function sassVariables(variablesObj) {
+    return Object.keys(variablesObj).map(function (name) {
+        return sassVariable(name, variablesObj[name]);
+    }).join('\n')
+}
