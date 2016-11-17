@@ -10,7 +10,9 @@ html, body {
   margin: 50px auto;
   padding: 20px;
   background: #ffb;
-  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5); }
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+  font-size: 150%;
+  font-weight: bolder; }
 
 .todoList {
   margin-top: 20px;
