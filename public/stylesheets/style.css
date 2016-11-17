@@ -113,11 +113,7 @@ input[type=submit] {
   border: none;
   background: none; }
 
-.title {
-  font-weight: bolder; }
-
 .button {
-  display: inline-block;
   text-align: center;
   font-size: 160%;
   font-weight: bolder;
@@ -130,12 +126,10 @@ input[type=submit] {
   border: none;
   box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5); }
 
-.empty {
-  display: table;
-  margin: 0 auto;
-  text-align: center; }
-  .empty a {
-    text-decoration: none;
-    color: LightSkyBlue; }
+.noNote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
 
 /*# sourceMappingURL=style.css.map */

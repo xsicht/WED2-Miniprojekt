@@ -142,15 +142,7 @@ input[type=submit] {
 }
 
 
-
-.title {
-  font-weight: bolder;
-}
-
-
-
 .button{
-  display: inline-block;
   text-align: center;
   font-size: 160%;
   font-weight: bolder;
@@ -164,15 +156,11 @@ input[type=submit] {
   box-shadow: $shadow;
 }
 
-
-
-.empty{
-  display: table;
-  margin: 0 auto;
-  text-align:center;
-  a{
-    text-decoration: none;
-    color: $color-ascent;
-  }
+.noNote{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:  center;
 }
+
 
