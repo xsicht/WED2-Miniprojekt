@@ -7,7 +7,7 @@ var mom = require('moment');
 module.exports.showIndex = function (req, res) {
     store.all(function(err, notices) {
         var data ={};
-        data.style = style;
+        data.style = req.session.style;
         var itemsLength = Object.keys(notices).length;
         //res.render('index' , data || {}); geht nicht weil data immer inhalt hat {[]}
         if (itemsLength == 0){
@@ -131,7 +131,13 @@ module.exports.showTodo = function (req, res) {
 };
 
 module.exports.switchStyle = function (req, res) {
-    style = "alt";
+    console.log(req.session.style);
+    if (req.session.style == "alt") {
+        req.session.style = "";
+    } else {
+        req.session.style = "alt";
+    }
+    console.log(req.session.style);
      res.redirect("/");
 };
 
