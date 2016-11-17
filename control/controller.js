@@ -12,7 +12,7 @@ module.exports.showIndex = function (req, res) {
         if (itemsLength == 0){
             res.render('index', data);
         } else{
-            data.todo = notices;
+            data.todo = dateFormat(notices);
             res.render('index' , data);
         }
     });
@@ -24,33 +24,71 @@ module.exports.showSorted = function(req, res) {
         data.todo = notices;
         switch(req.params.sorting) {
             case "byFinishDate":
-                data.todo.sort(function (a, b) {
-                    return Date.parse(a.until) - Date.parse(b.until);
-                });
+                if(req.session.sortedByFinishDateDsc){
+                    resetSorting(req);
+                    req.session.sortedByFinishDateAsc = true;
+                    data.todo.sort(function (a, b) {
+                        return mom(a.until) > mom(b.until);
+                    });
+                }
+                else {
+                    resetSorting(req);
+                    req.session.sortedByFinishDateDsc = true;
+                    data.todo.sort(function (a, b) {
+                        return mom(a.until) < mom(b.until);
+                    });
+                }
                 break;
+
             case "byCreationDate":
-                data.todo.sort(function (a, b) {
-                    return Date.parse(a.created) - Date.parse(b.created);
-                });
+                if(req.session.sortedByCreationDateDsc){
+                    resetSorting(req);
+                    req.session.sortedByCreationDateAsc = true;
+                    data.todo.sort(function (a, b) {
+                        return mom(a.created) > mom(b.created);
+                    });
+                }
+                else {
+                    resetSorting(req);
+                    req.session.sortedByCreationDateDsc = true;
+                    data.todo.sort(function (a, b) {
+                        return mom(a.created) < mom(b.created);
+                    });
+                }
                 break;
+
             case "byImportance":
-                data.todo.sort(function (a, b) {
-                    return parseFloat(a.importance) - parseFloat(b.importance);
-                });
+                if(req.session.sortedByImportanceDsc){
+                    resetSorting(req);
+                    req.session.sortedBybyImportanceAsc = true;
+                    data.todo.sort(function (a, b) {
+                        return Date.parse(a.importance) - Date.parse(b.importance);
+                    });
+                }
+                else {
+                    resetSorting(req);
+                    req.session.sortedByImportanceDsc = true;
+                    data.todo.sort(function (a, b) {
+                        return Date.parse(b.importance) - Date.parse(a.importance);
+                    });
+                }
                 break;
+
             case "byCompletion":
-                data.todo = data.todo.filter(function (i){
-                    return i.done=="true";
-                });
+                if(req.session.sortedByCompletion) {
+                    resetSorting(req);
+                }
+                else {
+                    resetSorting(req);
+                    req.session.sortedByCompletion = true;
+                    data.todo = data.todo.filter(function (i){
+                        return i.done=="true";
+                    });
+                }
                 break;
         }
+        data.todo = dateFormat(data.todo);
         res.render('index', data);
-    });
-};
-
-module.exports.showNotice = function(req, res) {
-    store.get(req.params.id, function(err, notice) {
-        err? res.end("FAIL"): res.end("OK");
     });
 };
 
@@ -58,8 +96,8 @@ module.exports.saveNotice = function(req, res) {
     var todoTitle = req.body.title;
     var todoDescription = req.body.description;
     var todoImportance = req.body.importance;
-    var todoUntil = req.body.until;
-    var todoCreated = new Date().toString();
+    var todoUntil = new Date(req.body.until);
+    var todoCreated = new Date();
     var todoDone = false;
     store.add(todoTitle, todoDescription, todoImportance, todoUntil, todoCreated, todoDone, function (err, notice) {
         res.redirect("/");
@@ -96,32 +134,20 @@ module.exports.switchStyle = function (req, res) {
      res.redirect("/");
 };
 
-var sassOptionsDefaults = {
-    includePaths: [
-        'style.scss'
-    ],
-    outputStyle: 'compressed'
-};
-
-function dynamicSass(scssEntry, variables, handleSuccess) {
-    var dataString =  sassVariables(variables) + "@import '" + scssEntry  + "';";
-    var sassOptions = Object.assign({}, sassOptionsDefaults, {
-        data: dataString
-    });
-
-    sass.render(sassOptions, function (err, result) {
-        console.log(sassOptions);
-        return handleSuccess(result.css.toString());
-    });
+function resetSorting(req){
+    req.session.sortedByFinishDateAsc = false;
+    req.session.sortedByFinishDateDsc = false;
+    req.session.sortedByCreationDateAsc = false;
+    req.session.sortedByCreationDateDsc = false;
+    req.session.sortedByImportanceAsc = false;
+    req.session.sortedByImportanceDsc = false;
+    req.session.sortedByCompletion = false;
 }
 
-
-function sassVariable(name, value) {
-    return "$" + name + ": " + value + ";";
-}
-
-function sassVariables(variablesObj) {
-    return Object.keys(variablesObj).map(function (name) {
-        return sassVariable(name, variablesObj[name]);
-    }).join('\n')
+function dateFormat(date){
+    for(i in date){
+        date[i].until = mom(date[i].until).format('L');
+        date[i].created = mom(date[i].created).format('L');
+    }
+    return date;
 }
