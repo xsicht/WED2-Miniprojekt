@@ -1,14 +1,16 @@
 var store = require("../model/model.js");
 var bodyParser = require('body-parser');
 var sass = require('node-sass');
+var style = "";
 
 module.exports.showIndex = function (req, res) {
     store.all(function(err, notices) {
         var data ={};
+        data.style = style;
         var itemsLength = Object.keys(notices).length;
         //res.render('index' , data || {}); geht nicht weil data immer inhalt hat {[]}
         if (itemsLength == 0){
-            res.render('index');
+            res.render('index', data);
         } else{
             data.todo = notices;
             res.render('index' , data);
@@ -90,18 +92,8 @@ module.exports.showTodo = function (req, res) {
 };
 
 module.exports.switchStyle = function (req, res) {
-     store.all(function(err, notices) {
-        var data ={};
-        var items = Object.keys(notices).length;
-        if (items == 0){
-            res.render('index');
-        } else{
-            data.todo = notices;
-            dynamicSass('style.scss', {
-                'colorBackground': 'blue'
-            }, res.render('index' , data));
-        }
-    });
+    style = "alt";
+     res.redirect("/");
 };
 
 var sassOptionsDefaults = {
