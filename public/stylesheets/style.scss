@@ -29,13 +29,21 @@ html, body {
   align-content: space-around;
 }
 
+#createNew{
+  margin-top: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-content: space-around;
+}
+
 .first{
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
 }
 
-.filter{
+.filter, #back {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -83,6 +91,7 @@ html, body {
   top: 0;
   left: 0;
   background: url("/pictures/done.svg");
+  background-repeat: no-repeat;
   background-size: 100%;
 }
 .title{
@@ -93,18 +102,24 @@ html, body {
   word-wrap:break-word;
 }
 
-
-.newPostIt{
-  display: table;
-  margin: 50px auto;
-
-}
-
 .material-icons{
   font-size: $iconSize !important;
   color: $colorText;
 }
 
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-family: 'Indie Flower', cursive;
+}
+
+
+input {
+  font-family: 'Indie Flower', cursive;
+  font-size: 100%;
+}
 input[type=submit] {
   background: url("/pictures/save.png");
   background-size: cover;
@@ -112,6 +127,16 @@ input[type=submit] {
   display: block;
   height: 30px;
   width: 30px;
+}
+
+.submitButton{
+  position: absolute;
+  bottom: 50px;
+  right:  50px;
+}
+#submitButton{
+  border: none;
+  background: none;
 }
 
 

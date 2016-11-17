@@ -1,40 +1,48 @@
-<div class="container">
-    <div class="content">
-        <div class="postIt newPostIt">
-            <form id="todo" method=post action="{{#if _id}}/todo/{{_id}}{{else}}/todo{{/if}}" class="todo">
+<div id="createNew">
+    <div class="postIt newPostIt">
+        <form id="todo" method=post action="{{#if _id}}/todo/{{_id}}{{else}}/todo{{/if}}" class="todo">
+            <div class="date">
+                <i class="material-icons">schedule</i>
+                <input type="date" name="until" value="{{until}}">
+
+            </div>
+            <div class="importance">
+                <i class="material-icons">assignment_late</i>
+                <input type="number" name="importance" min="1" max="5" value="{{importance}}">
+
+            </div>
+            <div class="title">
                 <label for="title">Title
-                    <input id="title" name="title" required="required" value="{{title}}">
+                    <input type=text id="title" placeholder="Title" name="title" required="required" value="{{title}}">
                 </label>
+            </div>
 
+            <div class="description">
                 <label for="description">Description
-                    <input id="description" name="description" value="{{description}}">
+                    <input type=text id="description" placeholder="Description" name="description" value="{{description}}">
                 </label>
+            </div>
 
-                <label for="until">Until
-                    <input type="date" name="until" value="{{until}}">
-                </label>
-
-                <label for="importance">Importance
-                    <input type="number" name="importance" min="1" max="5" value="{{importance}}">
-                </label>
-
+            {{#if _id}}
                 <label for="done">done
                     <input type="checkbox" id="done" name="done" value="true" {{#if done}}checked{{/if}}>
                 </label>
+            {{/if}}
 
-                <!--{{#if _id}}
-                    <input type="submit" value="Edit" class="button">
-                {{else}}
-                    <input type="submit" value="Save" class="button">
-                    <i class="material-icons">sd_card</i>
-                {{/if}}-->
-
-                <button type="submit">
+            <div class="submitButton">
+                <button type="submit" id="submitButton">
                     <i class="material-icons">sd_card</i>
                 </button>
-            </form>
-            {{#if _id}}<a href="/delete/{{_id}}" class="button"><i class="material-icons">delete</i></a></button>{{/if}}
-            <a href="/" class="icon"><i class="material-icons">clear</i></a></button>
-        </div>
+            </div>
+        </form>
+        {{#if _id}}
+            <div class="edit">
+                <a href="/delete/{{_id}}"><i class="material-icons">delete</i></a></button>
+            </div>
+        {{/if}}
     </div>
+</div>
+<div id="back">
+    <a href="/" class="button">Back</a>
+    <!-- <i class="material-icons">clear</i> -->
 </div>
