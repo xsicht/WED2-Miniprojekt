@@ -14,14 +14,29 @@
             {{#each todo}}
                 {{#if _id}}
                     <div class="postIt">
-                        <p class="date"><i class="material-icons">schedule</i>{{until}}</p>
-                        <p><i class="material-icons">assignment_late</i>{{importance}}</p>
-                        <p class="title">{{title}}</p>
-                        <p class="description">{{description}}</p>
-                        <a href="/todo/{{_id}}/" id="{{_id}}" class="icon" ><i class="material-icons">mode_edit</i></a>
+                        <div class="date">
+                            <p><i class="material-icons">schedule</i>{{until}}</p>
+                        </div>
+
+                        <div class="importance">
+                            <p><i class="material-icons">assignment_late</i>{{importance}}</p>
+                        </div>
+
+                        <div class="title">
+                            <p>{{title}}</p>
+                        </div>
+
+                        <div class="description">
+                            <p>{{description}}</p>
+                        </div>
+
                         {{#if done}}
-                            <i class="material-icons done">done</i>
+                            <div class="done"></div>
                         {{/if}}
+
+                        <div class="edit">
+                            <a href="/todo/{{_id}}/" id="{{_id}}" class="icon" ><i class="material-icons check">mode_edit</i></a>
+                        </div>
                     </div>
                 {{/if}}
             {{/each}}
