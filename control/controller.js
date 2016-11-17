@@ -93,4 +93,8 @@ module.exports.showTodo = function (req, res) {
     });
 }
 
+module.exports.switchStyle = function (req, res) {
+    console.log("switchStyle");
+}
+
 
