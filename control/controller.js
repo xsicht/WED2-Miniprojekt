@@ -89,6 +89,7 @@ module.exports.showSorted = function(req, res) {
                 break;
         }
         data.todo = dateFormat(data.todo);
+        data.style = req.session.style;
         res.render('index', data);
     });
 };
