@@ -9,10 +9,11 @@ module.exports.showIndex = function (req, res) {
         var data ={};
         data.style = req.session.style;
         var itemsLength = Object.keys(notices).length;
-        //res.render('index' , data || {}); geht nicht weil data immer inhalt hat {[]}
-        if (itemsLength == 0){
+
+        if (itemsLength == 0) {
             res.render('index', data);
-        } else{
+        }
+        else {
             data.todo = dateFormat(notices);
             res.render('index' , data);
         }
@@ -23,6 +24,7 @@ module.exports.showSorted = function(req, res) {
     store.all(function(err, notices) {
         var data = {};
         data.todo = notices;
+
         switch(req.params.sorting) {
             case "byFinishDate":
                 if(req.session.sortedByFinishDateDsc){
@@ -88,6 +90,7 @@ module.exports.showSorted = function(req, res) {
                 }
                 break;
         }
+
         data.todo = dateFormat(data.todo);
         data.style = req.session.style;
         res.render('index', data);

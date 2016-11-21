@@ -1,31 +1,31 @@
 <div id="createNew">
     <div class="postIt newPostIt">
-        <form id="todo" method=post action="{{#if _id}}/todo/{{_id}}{{else}}/todo{{/if}}" class="todo">
+        <form id="todo" method=post action="{{#if this._id}}/todo/{{this._id}}{{else}}/todo{{/if}}" class="todo">
             <div class="date">
                 <i class="material-icons">schedule</i>
-                <input type="date" name="until" value="{{until}}">
+                <input type="date" name="until" value="{{this.until}}">
 
             </div>
             <div class="importance">
-                <i class="material-icons">assignment_late</i>
-                <input type="number" name="importance" min="1" max="5" value="{{importance}}">
+                <i class="material-icons">assignment_late</i>  <!-- ic_grade, assignment_late-->
+                <input type="number" name="importance" min="1" max="5" value="{{this.importance}}">
 
             </div>
             <div class="title">
                 <label for="title">Title
-                    <input type=text id="title" placeholder="Title" name="title" required="required" value="{{title}}">
+                    <input type=text id="title" placeholder="Title" name="title" required="required" value="{{this.title}}">
                 </label>
             </div>
 
             <div class="description">
                 <label for="description">Description
-                    <input type=text id="description" placeholder="Description" name="description" value="{{description}}">
+                    <input type=text id="description" placeholder="Description" name="description" value="{{this.description}}">
                 </label>
             </div>
 
-            {{#if _id}}
+            {{#if this._id}}
                 <label for="done">done
-                    <input type="checkbox" id="done" name="done" value="true" {{#if done}}checked{{/if}}>
+                    <input type="checkbox" id="done" name="done" value="true" {{#if this.done}}checked{{/if}}>
                 </label>
             {{/if}}
 
@@ -35,14 +35,13 @@
                 </button>
             </div>
         </form>
-        {{#if _id}}
+        {{#if this._id}}
             <div class="edit">
-                <a href="/delete/{{_id}}"><i class="material-icons">delete</i></a></button>
+                <a href="/delete/{{this._id}}"><i class="material-icons">delete</i></a></button>
             </div>
         {{/if}}
     </div>
 </div>
 <div id="back">
     <a href="/" class="button">Back</a>
-    <!-- <i class="material-icons">clear</i> -->
 </div>
