@@ -15,11 +15,11 @@
                 {{#if this._id}}
                     <div class="postIt">
                         <div class="date">
-                            <p><i class="material-icons">schedule</i>{{this.until}}</p>
+                            {{this.until}} <!-- <span class="material-icons">schedule</span> -->
                         </div>
 
                         <div class="importance">
-                            {{#drawStars this.importance }}
+                            {{#drawStars this.importance}}
                                 {{this}}
                             {{/drawStars}}
                         </div>
@@ -37,7 +37,7 @@
                         {{/if}}
 
                         <div class="edit">
-                            <a href="/todo/{{this._id}}/" id="{{this._id}}" class="icon" ><i class="material-icons check">mode_edit</i></a>
+                            <a href="/todo/{{this._id}}/" id="{{this._id}}" class="icon" ><span class="material-icons check">mode_edit</span></a>
                         </div>
                     </div>
                 {{/if}}

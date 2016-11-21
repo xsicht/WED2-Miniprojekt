@@ -2,12 +2,11 @@
     <div class="postIt newPostIt">
         <form id="todo" method=post action="{{#if this._id}}/todo/{{this._id}}{{else}}/todo{{/if}}" class="todo">
             <div class="date">
-                <i class="material-icons">schedule</i>
+                <span class="material-icons">schedule</span>
                 <input type="date" name="until" value="{{this.until}}">
-
             </div>
             <div class="importance">
-                <i class="material-icons">assignment_late</i>  <!-- ic_grade, assignment_late-->
+                <span class="material-icons">assignment_late</span>
                 <input type="number" name="importance" min="1" max="5" value="{{this.importance}}">
 
             </div>
@@ -31,13 +30,13 @@
 
             <div class="submitButton">
                 <button type="submit" id="submitButton">
-                    <i class="material-icons">sd_card</i>
+                    <span class="material-icons">sd_card</span>
                 </button>
             </div>
         </form>
         {{#if this._id}}
             <div class="edit">
-                <a href="/delete/{{this._id}}"><i class="material-icons">delete</i></a></button>
+                <a href="/delete/{{this._id}}"><span class="material-icons">delete</span></a></button>
             </div>
         {{/if}}
     </div>

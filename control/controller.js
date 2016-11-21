@@ -10,13 +10,10 @@ module.exports.showIndex = function (req, res) {
         data.style = req.session.style;
         var itemsLength = Object.keys(notices).length;
 
-        if (itemsLength == 0) {
-            res.render('index', data);
-        }
-        else {
+        if (itemsLength != 0) {
             data.todo = dateFormat(notices);
-            res.render('index' , data);
         }
+        res.render('index' , data);
     });
 };
 
@@ -123,13 +120,12 @@ module.exports.deleteNotice =  function(req, res) {
     });
 };
 
-module.exports.newTodo = function (req, res) {
-    res.render('todo');
-};
-
 module.exports.showTodo = function (req, res) {
-    console.log("edit Todo");
     store.get(req.params.id, function(err, data) {
+        if(data == null){
+            var data = {};
+        }
+        data.style = req.session.style;
         res.render('todo', data);
     });
 };
@@ -141,8 +137,7 @@ module.exports.switchStyle = function (req, res) {
     } else {
         req.session.style = "alt";
     }
-    console.log(req.session.style);
-     res.redirect("/");
+    res.redirect("/");
 };
 
 function resetSorting(req){

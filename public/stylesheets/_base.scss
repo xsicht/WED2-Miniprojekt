@@ -61,7 +61,7 @@ html, body {
   }
 }
 
-.postIt{
+.postIt {
   background: $colorSticky;
   box-shadow: $shadow;
   padding: 50px;
@@ -72,18 +72,20 @@ html, body {
   position:relative;
 }
 
-.date{
+.date {
+  display: flex;
   float:right;
-  overflow:hidden;
+  //overflow:hidden;
 }
 
 .importance{
+  display: flex;
 }
-.edit{
+.edit {
   position: absolute;
   bottom: 50px;
 }
-.done{
+.done {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -93,15 +95,15 @@ html, body {
   background-repeat: no-repeat;
   background-size: 100%;
 }
-.title{
+.title {
   font-size: 150%;
 }
 
-.description, .title{
+.description, .title {
   word-wrap:break-word;
 }
 
-.material-icons{
+.material-icons {
   font-size: $iconSize !important;
   color: $colorText;
 }
