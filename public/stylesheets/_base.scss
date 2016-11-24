@@ -31,7 +31,11 @@ html, body {
 }
 
 .todoForm {
-  //height: 75%;
+  height: 75%;
+}
+
+.todo{
+  height: 100%;
 }
 
 .todoList{
@@ -123,12 +127,12 @@ html, body {
 }
 
 .title {
-  height: 14%;
+  height: 30%;
   font-size: 150%;
 }
 
 .description {
-  height: 10%;
+  height: 30%;
 }
 
 .description, .title {
@@ -141,6 +145,7 @@ html, body {
 }
 
 input[type=text] {
+  height: 35%;
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -153,20 +158,14 @@ input {
   font-size: 100%;
 }
 input[type=submit] {
-  background: url("/pictures/save.png");
-  background-size: cover;
-  border: 0;
-  display: block;
-  height: 30px;
-  width: 30px;
+  //background: url("/pictures/save.png");
 }
 
-.submitButton{
+#submitButton{
+  height: 10%;
   position: absolute;
   bottom: 11%;
   right:  11%;
-}
-#submitButton{
   border: none;
   background: none;
 }
