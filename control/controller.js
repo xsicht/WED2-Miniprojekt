@@ -5,38 +5,66 @@ var style = "";
 var mom = require('moment');
 
 module.exports.showIndex = function (req, res) {
-    store.all(function(err, notices) {
-        var data ={};
+    store.all(function(err, notices){
+        var data = {};
+        data.todo = notices;
         data.style = req.session.style;
-        var itemsLength = Object.keys(notices).length;
 
-        if (itemsLength != 0) {
-            data.todo = dateFormat(notices);
-        }
-        res.render('index' , data);
-    });
+                if(req.session.sortedByFinishDateDsc){
+                    data.todo.sort(function (a, b) {
+                        return mom(a.until) > mom(b.until);
+                    });
+                }
+                if(req.session.sortedByFinishDateAscs){
+                    data.todo.sort(function (a, b) {
+                        return mom(a.until) < mom(b.until);
+                    });
+                }
+
+                if(req.session.sortedByCreationDateDsc){
+                    data.todo.sort(function (a, b) {
+                        return mom(a.created) > mom(b.created);
+                    });
+                }
+                if(req.session.sortedByCreationDateAsc){
+                    data.todo.sort(function (a, b) {
+                        return mom(a.created) < mom(b.created);
+                    });
+                }
+
+                if(req.session.sortedByImportanceDsc){
+                    data.todo.sort(function (a, b) {
+                        return Date.parse(a.importance) - Date.parse(b.importance);
+                    });
+                }
+                if(req.session.sortedByImportanceAsc){
+                    data.todo.sort(function (a, b) {
+                        return Date.parse(b.importance) - Date.parse(a.importance);
+                    });
+                }
+                if(req.session.sortedByCompletion) {
+                    data.todo = data.todo.filter(function (i){
+                        return i.done=="true";
+                    });
+                }
+
+             if (Object.keys(data.todo).length != 0) {
+                    data.todo = dateFormat(data.todo);
+             }
+             res.render('index' , data);
+        });
 };
 
 module.exports.showSorted = function(req, res) {
-    store.all(function(err, notices) {
-        var data = {};
-        data.todo = notices;
-
         switch(req.params.sorting) {
             case "byFinishDate":
                 if(req.session.sortedByFinishDateDsc){
                     resetSorting(req);
                     req.session.sortedByFinishDateAsc = true;
-                    data.todo.sort(function (a, b) {
-                        return mom(a.until) > mom(b.until);
-                    });
                 }
                 else {
                     resetSorting(req);
                     req.session.sortedByFinishDateDsc = true;
-                    data.todo.sort(function (a, b) {
-                        return mom(a.until) < mom(b.until);
-                    });
                 }
                 break;
 
@@ -44,33 +72,21 @@ module.exports.showSorted = function(req, res) {
                 if(req.session.sortedByCreationDateDsc){
                     resetSorting(req);
                     req.session.sortedByCreationDateAsc = true;
-                    data.todo.sort(function (a, b) {
-                        return mom(a.created) > mom(b.created);
-                    });
                 }
                 else {
                     resetSorting(req);
                     req.session.sortedByCreationDateDsc = true;
-                    data.todo.sort(function (a, b) {
-                        return mom(a.created) < mom(b.created);
-                    });
                 }
                 break;
 
             case "byImportance":
                 if(req.session.sortedByImportanceDsc){
                     resetSorting(req);
-                    req.session.sortedBybyImportanceAsc = true;
-                    data.todo.sort(function (a, b) {
-                        return Date.parse(a.importance) - Date.parse(b.importance);
-                    });
+                    req.session.sortedByImportanceAsc = true;
                 }
                 else {
                     resetSorting(req);
                     req.session.sortedByImportanceDsc = true;
-                    data.todo.sort(function (a, b) {
-                        return Date.parse(b.importance) - Date.parse(a.importance);
-                    });
                 }
                 break;
 
@@ -81,17 +97,11 @@ module.exports.showSorted = function(req, res) {
                 else {
                     resetSorting(req);
                     req.session.sortedByCompletion = true;
-                    data.todo = data.todo.filter(function (i){
-                        return i.done=="true";
-                    });
                 }
                 break;
         }
 
-        data.todo = dateFormat(data.todo);
-        data.style = req.session.style;
-        res.render('index', data);
-    });
+        res.redirect('/')
 };
 
 module.exports.saveNotice = function(req, res) {
@@ -131,7 +141,6 @@ module.exports.showTodo = function (req, res) {
 };
 
 module.exports.switchStyle = function (req, res) {
-    console.log(req.session.style);
     if (req.session.style == "alt") {
         req.session.style = "";
     } else {

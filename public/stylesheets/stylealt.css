@@ -61,8 +61,11 @@ html, body {
   position: relative; }
 
 .date {
-  float: right;
-  overflow: hidden; }
+  display: flex;
+  float: right; }
+
+.importance {
+  display: flex; }
 
 .edit {
   position: absolute;
