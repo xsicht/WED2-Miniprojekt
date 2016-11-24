@@ -30,6 +30,10 @@ html, body {
   width:100%;
 }
 
+.todoForm {
+  //height: 75%;
+}
+
 .todoList{
   height:58%;
   width:100%;
@@ -90,17 +94,23 @@ html, body {
 }
 
 .date {
+  height: 10%;
   display: flex;
   float:right;
 }
 
 .importance{
+  height: 10%;
   display: flex;
 }
+
 .edit {
+  height: 10%;
   position: absolute;
-  bottom: 50px;
+  bottom: 11%;
+  left: 11%
 }
+
 .done {
   width: 100%;
   height: 100%;
@@ -111,8 +121,14 @@ html, body {
   background-repeat: no-repeat;
   background-size: 100%;
 }
+
 .title {
+  height: 14%;
   font-size: 150%;
+}
+
+.description {
+  height: 10%;
 }
 
 .description, .title {
@@ -132,7 +148,6 @@ input[type=text] {
   font-family: 'Indie Flower', cursive;
 }
 
-
 input {
   font-family: 'Indie Flower', cursive;
   font-size: 100%;
@@ -148,8 +163,8 @@ input[type=submit] {
 
 .submitButton{
   position: absolute;
-  bottom: 50px;
-  right:  50px;
+  bottom: 11%;
+  right:  11%;
 }
 #submitButton{
   border: none;

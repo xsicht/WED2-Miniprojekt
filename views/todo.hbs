@@ -1,5 +1,6 @@
 <div id="createNew">
     <div class="postIt newPostIt">
+        <div class="todoForm">
         <form id="todo" method=post action="{{#if this._id}}/todo/{{this._id}}{{else}}/todo{{/if}}" class="todo">
             <div class="date">
                 <span class="material-icons">schedule</span>
@@ -34,6 +35,7 @@
                 </button>
             </div>
         </form>
+        </div>
         {{#if this._id}}
             <div class="edit">
                 <a href="/delete/{{this._id}}"><span class="material-icons">delete</span></a></button>
