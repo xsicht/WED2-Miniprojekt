@@ -98,13 +98,24 @@ html, body {
 }
 
 .date {
-  height: 70%;
+  height: 10%;
   display: flex;
   float:right;
 }
 
+.dateimportance > .date {
+  height: 80%;
+  display: flex;
+  float:right;
+}
+
+.dateimportance > .importance {
+  height: 80%;
+  display: flex;
+}
+
 .importance{
-  height: 70%;
+  height: 10%;
   display: flex;
 }
 
