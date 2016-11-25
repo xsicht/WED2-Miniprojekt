@@ -73,6 +73,8 @@ html, body {
 }
 
 /* Small screens */
+@media all and (max-width: 700px) {}
+
 @media all and (max-width: 700px) {
   .filter, .first{
     flex-flow: column wrap;
@@ -81,6 +83,10 @@ html, body {
   .filter a, .first a {
     margin: 5% 20%;
     padding: 3%;
+  }
+
+  .postIt {
+    width: 100% !important;
   }
 }
 
