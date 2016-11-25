@@ -9,19 +9,20 @@ html, body {
 }
 
 .header{
-  height:26%;
+  height:24%;
   width:100%;
-  display: flex;
   justify-content: center;
   align-content: center;
 }
 
 .sticky{
+  height: 50%;
+  width: 25%;
   margin: 50px auto;
   padding: 20px;
   background: $colorSticky;
   box-shadow: $shadow;
-  font-size: 100%;
+  font-size: 1.7vw;
   font-weight: bolder;
 }
 
@@ -81,16 +82,16 @@ html, body {
   }
 
   .filter a, .first a {
-    margin: 5px 20px;
-    padding: 3px;
+    margin: 5% 20%;
+    padding: 3%;
   }
 }
 
 .postIt {
   background: $colorSticky;
   box-shadow: $shadow;
-  padding: 50px;
-  margin: 20px;
+  padding: 3%;
+  margin: 2%;
   font-size: 120%;
   height: 65%;
   width: 25%;
@@ -192,8 +193,10 @@ input[type=submit] {
 }
 
 .button{
+  height: 20%;
+  width: 12%;
   text-align: center;
-  font-size: 130%;
+  font-size: 1.5vw;
   font-weight: bolder;
   padding: 50px 50px;
   margin: 20px;
