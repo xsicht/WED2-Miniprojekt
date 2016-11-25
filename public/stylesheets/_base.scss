@@ -73,21 +73,16 @@ html, body {
 }
 
 /* Small screens */
-@media all and (max-width: 700px) {}
 
 @media all and (max-width: 700px) {
-  .filter, .first{
+  .filter, .first {
     flex-flow: column wrap;
   }
-
-  .filter a, .first a {
-    margin: 5% 20%;
-    padding: 3%;
-  }
-
   .postIt {
     width: 100% !important;
   }
+
+  //Hier schriftgrössen neu setzten
 }
 
 .postIt {
