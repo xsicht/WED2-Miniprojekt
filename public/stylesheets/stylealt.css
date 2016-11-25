@@ -8,23 +8,30 @@ html, body {
   background-repeat: repeat; }
 
 .header {
-  height: 26%;
+  height: 24%;
   width: 100%;
-  display: flex;
   justify-content: center;
   align-content: center; }
 
 .sticky {
+  height: 50%;
+  width: 25%;
   margin: 50px auto;
   padding: 20px;
   background: #ff0961;
   box-shadow: 10px 10px 5px rgba(255, 255, 255, 0.5);
-  font-size: 100%;
+  font-size: 1.7vw;
   font-weight: bolder; }
 
 .content {
   height: 74%;
   width: 100%; }
+
+.todoForm {
+  height: 75%; }
+
+.todo {
+  height: 100%; }
 
 .todoList {
   height: 58%;
@@ -35,7 +42,7 @@ html, body {
   justify-content: space-around; }
 
 #createNew {
-  height: 60%;
+  height: 57%;
   width: 100%;
   margin-top: 20px;
   display: flex;
@@ -62,29 +69,46 @@ html, body {
   .filter, .first {
     flex-flow: column wrap; }
   .filter a, .first a {
-    margin: 5px 20px;
-    padding: 3px; } }
+    margin: 5% 20%;
+    padding: 3%; } }
 
 .postIt {
   background: #ff0961;
   box-shadow: 10px 10px 5px rgba(255, 255, 255, 0.5);
-  padding: 50px;
-  margin: 20px;
+  padding: 3%;
+  margin: 2%;
   font-size: 120%;
-  height: 60%;
+  height: 65%;
   width: 25%;
   position: relative; }
 
 .date {
+  height: 10%;
   display: flex;
   float: right; }
 
-.importance {
+.dateimportance > .date {
+  height: 80%;
+  display: flex;
+  float: right; }
+
+.dateimportance > .importance {
+  height: 80%;
   display: flex; }
 
+.importance {
+  height: 10%;
+  display: flex; }
+
+.dateimportance {
+  height: 20%;
+  width: 100%; }
+
 .edit {
+  height: 10%;
   position: absolute;
-  bottom: 50px; }
+  bottom: 11%;
+  left: 11%; }
 
 .done {
   width: 100%;
@@ -97,7 +121,11 @@ html, body {
   background-size: 100%; }
 
 .title {
+  height: 30%;
   font-size: 150%; }
+
+.description {
+  height: 30%; }
 
 .description, .title {
   word-wrap: break-word; }
@@ -107,6 +135,7 @@ html, body {
   color: dimgray; }
 
 input[type=text] {
+  height: 35%;
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -117,30 +146,23 @@ input {
   font-family: 'Indie Flower', cursive;
   font-size: 100%; }
 
-input[type=submit] {
-  background: url("/pictures/save.png");
-  background-size: cover;
-  border: 0;
-  display: block;
-  height: 30px;
-  width: 30px; }
-
-.submitButton {
-  position: absolute;
-  bottom: 50px;
-  right: 50px; }
-
 #submitButton {
+  height: 10%;
+  position: absolute;
+  bottom: 11%;
+  right: 11%;
   border: none;
   background: none; }
 
 #back {
-  height: 10%;
+  height: 17%;
   width: 100%; }
 
 .button {
+  height: 20%;
+  width: 12%;
   text-align: center;
-  font-size: 130%;
+  font-size: 1.5vw;
   font-weight: bolder;
   padding: 50px 50px;
   margin: 20px;

@@ -11,18 +11,16 @@ html, body {
 .header{
   height:24%;
   width:100%;
-  justify-content: center;
-  align-content: center;
 }
 
 .sticky{
   height: 50%;
   width: 25%;
-  margin: 50px auto;
-  padding: 20px;
+  margin: 3% auto;
+  padding: 2%;
   background: $colorSticky;
   box-shadow: $shadow;
-  font-size: 1.7vw;
+  font-size: 1.6vw;
   font-weight: bolder;
 }
 
@@ -42,11 +40,10 @@ html, body {
 .todoList{
   height:58%;
   width:100%;
-  margin-top: 20px;
+  margin-top: 1%;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  //align-content: space-around;
 }
 
 #createNew{
@@ -145,15 +142,16 @@ html, body {
 
 .title {
   height: 30%;
-  font-size: 150%;
+  font-size: 1.5vw;
 }
 
 .description {
   height: 30%;
+  font-size: 1vw;
 }
 
 .description, .title {
-  word-wrap:break-word;
+  //word-wrap:break-word;
 }
 
 .material-icons {
@@ -164,8 +162,9 @@ html, body {
 input[type=text] {
   height: 35%;
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  //padding: 12px 20px;
+  padding: 2% 5%;
+  margin: 1%;
   box-sizing: border-box;
   font-family: 'Indie Flower', cursive;
 }
@@ -174,9 +173,7 @@ input {
   font-family: 'Indie Flower', cursive;
   font-size: 100%;
 }
-input[type=submit] {
-  //background: url("/pictures/save.png");
-}
+
 
 #submitButton{
   height: 10%;
@@ -193,13 +190,13 @@ input[type=submit] {
 }
 
 .button{
-  height: 20%;
+  height: 16%;
   width: 12%;
   text-align: center;
-  font-size: 1.5vw;
+  font-size: 1.6vw;
   font-weight: bolder;
-  padding: 50px 50px;
-  margin: 20px;
+  padding: 1.7% 1.7%;
+  margin: 2%;
   text-decoration: none;
   color: black;
   background: url("/pictures/paper.jpg");
