@@ -116,7 +116,7 @@ html, body {
   left: 0;
   background: url("/pictures/done.svg");
   background-repeat: no-repeat;
-  background-size: 100%; }
+  background-size: 25vmax; }
 
 .title {
   height: 30%;
