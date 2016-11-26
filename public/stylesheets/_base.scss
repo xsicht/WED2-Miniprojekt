@@ -9,28 +9,27 @@ html, body {
 }
 
 .header{
-  height:24%;
+  height:20%;
   width:100%;
 }
 
 .sticky{
-  height: 50%;
-  width: 25%;
-  margin: 3% auto;
-  padding: 2%;
+  height: 55%;
+  width: 30%;
+  margin: auto;
   background: $colorSticky;
   box-shadow: $shadow;
-  font-size: 1.6vw;
+  font-size: 2.1vw;
   font-weight: bolder;
 }
 
 .content{
-  height:74%;
+  height:78%;
   width:100%;
 }
 
 .todoForm {
-  height: 75%;
+  height: 90%;
 }
 
 .todo{
@@ -76,11 +75,23 @@ html, body {
 
 @media all and (max-width: 700px) {
   .filter, .first {
-    flex-flow: column wrap;
+    width: 100% !important;
+    flex-flow: row wrap;
+  }
+  .sticky{
+    width: 50%;
+    height: 30%;
+    font-size: 14px;
   }
   .postIt {
     width: 100% !important;
+    height: 90% !important;
   }
+  .button {
+    font-size: 16px !important;
+    width: 40% !important;
+  }
+
 
   //Hier schriftgrössen neu setzten
 }
@@ -91,8 +102,8 @@ html, body {
   padding: 3%;
   margin: 2%;
   font-size: 120%;
-  height: 65%;
-  width: 25%;
+  height: 80%;
+  width: 35%;
   position:relative;
 }
 
@@ -142,13 +153,15 @@ html, body {
 }
 
 .title {
+  margin: 1%;
   height: 30%;
-  font-size: 1.5vw;
+  font-size: 32px;
 }
 
 .description {
+  margin: 1%;
   height: 30%;
-  font-size: 1vw;
+  font-size: 20px;
 }
 
 .description, .title {

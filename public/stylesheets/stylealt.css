@@ -8,23 +8,20 @@ html, body {
   background-repeat: repeat; }
 
 .header {
-  height: 24%;
-  width: 100%;
-  justify-content: center;
-  align-content: center; }
+  height: 20%;
+  width: 100%; }
 
 .sticky {
-  height: 50%;
-  width: 25%;
-  margin: 50px auto;
-  padding: 20px;
+  height: 55%;
+  width: 30%;
+  margin: auto;
   background: #ff0961;
   box-shadow: 10px 10px 5px rgba(255, 255, 255, 0.5);
-  font-size: 1.7vw;
+  font-size: 2.1vw;
   font-weight: bolder; }
 
 .content {
-  height: 74%;
+  height: 78%;
   width: 100%; }
 
 .todoForm {
@@ -36,7 +33,7 @@ html, body {
 .todoList {
   height: 58%;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 1%;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around; }
@@ -67,10 +64,16 @@ html, body {
 /* Small screens */
 @media all and (max-width: 700px) {
   .filter, .first {
-    flex-flow: column wrap; }
-  .filter a, .first a {
-    margin: 5% 20%;
-    padding: 3%; } }
+    width: 100% !important;
+    flex-flow: row wrap; }
+  .sticky {
+    width: 50%;
+    height: 30%;
+    font-size: 14px; }
+  .postIt {
+    width: 100% !important; }
+  .button {
+    width: 40% !important; } }
 
 .postIt {
   background: #ff0961;
@@ -78,8 +81,8 @@ html, body {
   padding: 3%;
   margin: 2%;
   font-size: 120%;
-  height: 65%;
-  width: 25%;
+  height: 75%;
+  width: 35%;
   position: relative; }
 
 .date {
@@ -118,17 +121,17 @@ html, body {
   left: 0;
   background: url("/pictures/done.svg");
   background-repeat: no-repeat;
-  background-size: 100%; }
+  background-size: 25vmax; }
 
 .title {
+  margin: 1%;
   height: 30%;
-  font-size: 150%; }
+  font-size: 32px; }
 
 .description {
-  height: 30%; }
-
-.description, .title {
-  word-wrap: break-word; }
+  margin: 1%;
+  height: 30%;
+  font-size: 20px; }
 
 .material-icons {
   font-size: 40px !important;
@@ -137,8 +140,8 @@ html, body {
 input[type=text] {
   height: 35%;
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  padding: 2% 5%;
+  margin: 1%;
   box-sizing: border-box;
   font-family: 'Indie Flower', cursive; }
 
@@ -159,13 +162,13 @@ input {
   width: 100%; }
 
 .button {
-  height: 20%;
+  height: 16%;
   width: 12%;
   text-align: center;
-  font-size: 1.5vw;
+  font-size: 1.6vw;
   font-weight: bolder;
-  padding: 50px 50px;
-  margin: 20px;
+  padding: 1.7% 1.7%;
+  margin: 2%;
   text-decoration: none;
   color: black;
   background: url("/pictures/paper.jpg");
